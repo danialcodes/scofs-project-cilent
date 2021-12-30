@@ -2,8 +2,12 @@ import React, { useState, Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import logo from "../../images/l.png";
 import "./Header.css";
-import { Link } from 'react-router-dom';
-
+import { Link,NavLink } from 'react-router-dom';
+const activeStyle = ({isActive}) =>{
+    return {
+        backgroundColor: isActive? "red": ""
+    }
+}
 const Header = () => {
 
     const [showDropdown, setshowDropdown] = useState(false);
@@ -52,16 +56,17 @@ const Header = () => {
                                 </div>
                                 <ul className="py-1" >
                                     <li>
-                                        <Link to="/dashboard" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</Link>
+                                        <NavLink to="/dashboard" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white
+                                    ">Dashboard</NavLink>
                                     </li>
                                     <li>
-                                        <Link to="/settings" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</Link>
+                                        <NavLink to="/settings" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</NavLink>
                                     </li>
                                     <li>
-                                        <Link to="/earnings" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</Link>
+                                        <NavLink to="/earnings" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</NavLink>
                                     </li>
                                     <li>
-                                        <Link to="/signout" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</Link>
+                                        <NavLink to="/signout" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</NavLink>
                                     </li>
                                 </ul>
                             </Popover.Panel>
@@ -77,27 +82,27 @@ const Header = () => {
                     <div className={`${showDropdown ? "" : "hidden"} justify-between items-center w-full md:flex md:w-auto md:order-1`}>
                         <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
                             <li>
-                                <Link to="/" className="
-                                 link-underline link-underline-black block py-2 pr-4 pl-3 text-green-700  rounded hover:text-gray-900 md:bg-transparent md:p-0 dark:text-white text-xl" aria-current="page">HOME</Link>
+                                <NavLink style={activeStyle} to="/" className="
+                                 link-underline link-underline-black block py-2 pr-4 pl-3 text-green-700  rounded hover:text-gray-900 md:bg-transparent md:p-0 dark:text-white text-xl" aria-current="page">HOME</NavLink>
                             </li>
                             <li>
-                                <Link to="/about" className="
+                                <NavLink style={activeStyle} to="/about" className="
                                 link-underline link-underline-black
-                                text-xl block py-2 pr-4 pl-3 text-green-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 hover:text-gray-900 md:p-0 ">ABOUT</Link>
+                                text-xl block py-2 pr-4 pl-3 text-green-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 hover:text-gray-900 md:p-0 ">ABOUT</NavLink>
                             </li>
                             <li>
-                                <Link to="/projects" className="
-                                link-underline link-underline-black text-xl block py-2 pr-4 pl-3 text-green-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 hover:text-gray-900 md:p-0 ">PROJECTS</Link>
+                                <NavLink style={activeStyle} to="/projects" className="
+                                link-underline link-underline-black text-xl block py-2 pr-4 pl-3 text-green-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 hover:text-gray-900 md:p-0 ">PROJECTS</NavLink>
                             </li>
                             <li>
-                                <Link to="/scoreboard" className="
+                                <NavLink style={activeStyle} to="/scoreboard" className="
                                 link-underline link-underline-black
-                                text-xl block py-2 pr-4 pl-3 text-green-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 hover:text-gray-900 md:p-0 ">SCOREBOARD</Link>
+                                text-xl block py-2 pr-4 pl-3 text-green-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 hover:text-gray-900 md:p-0 ">SCOREBOARD</NavLink>
                             </li>
                             <li>
-                                <Link to="/profile" className="
+                                <NavLink style={activeStyle} to="/profile" className="
                                 link-underline link-underline-black
-                                text-xl block py-2 pr-4 pl-3 text-green-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 hover:text-gray-900 md:p-0 ">PROFILE</Link>
+                                text-xl block py-2 pr-4 pl-3 text-green-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 hover:text-gray-900 md:p-0 ">PROFILE</NavLink>
                             </li>
                         </ul>
                     </div>

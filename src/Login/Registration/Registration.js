@@ -8,7 +8,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 const Registration = () => {
     const { user, registerUser, loading, authError } = useAuth();
-    const [loginData, setLoginData] = useState({});
+    const [registerData, setRegisterData] = useState({});
 
     const navigate = useNavigate();
 
