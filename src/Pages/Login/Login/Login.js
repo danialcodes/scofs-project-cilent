@@ -3,15 +3,16 @@ import React, { useState } from 'react';
 import googleIcon from "../../../images/icons/google.svg";
 import githubIcon from "../../../images/icons/github.svg";
 
-import { Container, Grid, TextField, Typography, Button, CircularProgress, Alert, AlertTitle, InputBase, styled, alpha } from '@mui/material';
+import { Container, Grid, TextField, Typography, Button, CircularProgress,Box, Alert, AlertTitle, InputBase, styled, alpha } from '@mui/material';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import ShowAlert from '../../../utilities/ShowAlert/ShowAlert';
 
 const Login = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { user, firebaseEmailPassLogin, firebaseGoogleLogin, firebaseGithubLogin, firebaseSignOut, loading, authError, } = useAuth();
-    console.log(user.email);
+    const { user, firebaseEmailPassLogin, firebaseGoogleLogin, firebaseGithubLogin, firebaseSignOut, loading, authError } = useAuth();
+    console.log(authError);
     const [loginUserData, setLoginUserData] = useState(
         { email: "", password: "" }
     );
@@ -55,7 +56,7 @@ const Login = () => {
                     </div>
                     <div className="mt-8">
                         <div className="mt-6">
-                            {loading && <CircularProgress />}
+                            {/* {loading && <CircularProgress />} */}
                             <form onSubmit={handleLoginSubmit} className="space-y-4">
 
                                 <div>
@@ -78,18 +79,21 @@ const Login = () => {
                                             autoComplete="off" value={loginUserData.password} onChange={handleChange} className="w-full px-3 py-2 text-base text-neutral-600 placeholder-gray-400 transition duration-500 ease-in-out transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300" />
                                     </div>
                                 </div>
+                                {authError &&
+                                    <ShowAlert severity="error" msg={authError}></ShowAlert>}
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center">
                                         <input id="remember-me" name="remember-me" type="checkbox" className="w-4 h-4 text-green-500 border-gray-200 rounded focus:ring-green-500" />
                                         <label htmlFor="remember-me" className="block ml-2 text-sm text-neutral-600"> Remember me
                                         </label>
                                     </div>
+
                                     <div>
+
                                         <button type="submit" className="flex items-center justify-center mx-auto px-4  py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-green-800 rounded-xl hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ">
-                                            Sign in
+                                            {loading ? <CircularProgress color="inherit" size={24}/> : "Login"}
                                         </button>
                                     </div>
-
                                 </div>
 
                             </form>

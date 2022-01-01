@@ -9,7 +9,7 @@ import useAuth from "../../../hooks/useAuth";
 const PrivateRoute = ({ children, ...rest }) => {
     const {user,loading} = useAuth();
     const location = useLocation();
-    if(loading){return <LinearProgress/>}
+    if(loading){return <LinearProgress color="success"/>}
     if(user.email){ return children}
     return (<Navigate to="/login" state={{from:location}}/>);
 

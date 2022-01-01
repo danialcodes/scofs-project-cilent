@@ -4,6 +4,8 @@ import googleIcon from "../../../images/icons/google.svg";
 import githubIcon from "../../../images/icons/github.svg";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import { CircularProgress } from '@mui/material';
+import ShowAlert from '../../../utilities/ShowAlert/ShowAlert';
 
 const Registration = () => {
     const navigate = useNavigate();
@@ -11,7 +13,7 @@ const Registration = () => {
 
     const [registerData, setRegisterData] = useState(
         {
-            
+
             firstName: "",
             lastName: "",
             email: "",
@@ -21,12 +23,12 @@ const Registration = () => {
     );
     const handleRegister = (e) => {
         e.preventDefault();
-        const { firstName,lastName,email, firstPassword, secondPassword } = registerData;
-        if(firstPassword!==secondPassword){
+        const { firstName, lastName, email, firstPassword, secondPassword } = registerData;
+        if (firstPassword !== secondPassword) {
             alert("Password not matched");
             return
         }
-        firebaseRegister(`${firstName + " " + lastName}`,email, firstPassword, navigate);
+        firebaseRegister(`${firstName + " " + lastName}`, email, firstPassword, navigate);
     }
     const handleChange = (e) => {
         const name = e.target.name;
@@ -106,19 +108,20 @@ const Registration = () => {
                                 </div>
 
 
-
+                                {authError &&
+                                    <ShowAlert severity="error" msg={authError}></ShowAlert>}
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center">
                                         <input id="isAggree" name="isAggree" type="checkbox" required className="w-4 h-4 text-green-500 border-gray-200 rounded focus:ring-green-500" />
                                         <label htmlFor="remember-me" className="block ml-2 text-sm text-neutral-600"> I agree to the
 
-                                            <Link to="/terms"> terms and conditions</Link>
+                                            <Link target="_blank" to="/terms"> terms and conditions</Link>
                                         </label>
                                     </div>
                                     <div>
-                                        <button type="submit" 
-                                        className="flex items-center justify-center mx-auto px-4  py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-green-800 rounded-xl hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ">
-                                            Register
+                                        <button type="submit"
+                                            className="flex items-center justify-center mx-auto px-4  py-2 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-green-800 rounded-xl hover:bg-green-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 ">
+                                            {loading ? <CircularProgress color="inherit" size={24} /> : "Register"}
                                         </button>
                                     </div>
 

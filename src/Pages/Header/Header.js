@@ -2,18 +2,24 @@ import React, { useState, Fragment } from 'react';
 import { Popover, Transition } from '@headlessui/react';
 import logo from "../../images/l.png";
 import "./Header.css";
-import { Link,NavLink } from 'react-router-dom';
-const activeStyle = ({isActive}) =>{
-    return {
-        backgroundColor: isActive? "red": ""
+import { Link, NavLink } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
+
+const activeStyle = ({ isActive }) => {
+    if (isActive) {
+        return {
+            backgroundSize: "100% 3px",
+            backgroundPosition: "0 100%"
+        }
     }
 }
+
+
 const Header = () => {
-
+    const {user,firebaseSignOut} = useAuth();
     const [showDropdown, setshowDropdown] = useState(false);
-
     return (
-        <header>
+        <header className='mb-5'>
             <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800">
 
                 <div className="container flex flex-wrap justify-between items-center mx-auto">
@@ -29,15 +35,15 @@ const Header = () => {
 
                     <Popover as="div" className="flex justify-between items-center md:order-2 relative">
 
-                        <div className="mr md:mr-2 relative">
+                        <div className="hidden lg:block mr md:mr-2 relative">
                             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                                 <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd"></path></svg>
                             </div>
-                            <input type="text" className="hidden md:block pl-10 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-green-900 focus:border-green-900 " placeholder="Search..." />
+                            <input type="text" className="  pl-10 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-green-900 focus:border-green-900 " placeholder="Search..." />
                         </div>
-                        <Popover.Button className="flex mr-5 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" >
+                        <Popover.Button className="flex mr-5 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-green-500 dark:focus:ring-gray-600" id="user-menu-button" >
                             <span className="sr-only">Open user menu</span>
-                            <img className="w-8 h-8 rounded-full" src={logo} alt="" />
+                            <img className="w-8 h-8 rounded-full" src={user.photoURL} alt="" />
                         </Popover.Button>
                         <Transition
                             as={Fragment}
@@ -51,8 +57,8 @@ const Header = () => {
 
                             <Popover.Panel as="div" className="absolute z-50 top-7 right-5   text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
                                 <div className="py-3 px-4">
-                                    <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                                    <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                                    <span className="block text-sm text-gray-900 dark:text-white">{user.displayName?user.displayName:"Your Name"}</span>
+                                    <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{user.email?user.email:"youremail@gmail.com"}</span>
                                 </div>
                                 <ul className="py-1" >
                                     <li>
@@ -66,7 +72,7 @@ const Header = () => {
                                         <NavLink to="/earnings" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</NavLink>
                                     </li>
                                     <li>
-                                        <NavLink to="/signout" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</NavLink>
+                                        <button onClick={firebaseSignOut} to="/signout" className="w-full  text-left  py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
                                     </li>
                                 </ul>
                             </Popover.Panel>

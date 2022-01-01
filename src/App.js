@@ -15,24 +15,26 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import About from './Pages/About/About';
 import Projects from './Pages/Projects/Projects';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 
 // import AuthProvider from './contexts/AuthProvider/AuthProvider';
 function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Header></Header>
+
         <Routes>
-          <Route path="/" element={<Home />} />
+
+          <Route path="/" element={<PrivateRoute><Header/><Home /></PrivateRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/scoreboard" element={<Scoreboard />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/registration" element={<Registration />} />
-          <Route path="/about" element={< About />} />
-          <Route path="/projects" element={< Projects />} />
+          <Route path="/profile" element={<PrivateRoute><Header/><Profile /></PrivateRoute>} />
+          <Route path="/scoreboard" element={<PrivateRoute><Header/><Scoreboard /></PrivateRoute>} />
+          <Route path="/settings" element={<PrivateRoute><Header/><Settings /></PrivateRoute>} />
+          <Route path="/dashboard" element={<PrivateRoute><Header/><Dashboard /></PrivateRoute>} />
+          <Route path="/about" element={<PrivateRoute><Header/>< About /></PrivateRoute>} />
+          <Route path="/projects" element={<PrivateRoute><PrivateRoute><Header/><Projects/></PrivateRoute></PrivateRoute>} />
+          {/* <Route path="/projects" element={<PrivateRoute><PrivateRoute><Header/><Profile /></PrivateRoute></PrivateRoute>} /> */}
 
         </Routes>
       </BrowserRouter>
