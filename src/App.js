@@ -16,6 +16,7 @@ import About from './Pages/About/About';
 import Projects from './Pages/Projects/Projects';
 import AuthProvider from './contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import NotFound from './Pages/NotFound/NotFound';
 
 // import AuthProvider from './contexts/AuthProvider/AuthProvider';
 function App() {
@@ -35,7 +36,7 @@ function App() {
           <Route path="/about" element={<PrivateRoute><Header/>< About /></PrivateRoute>} />
           <Route path="/projects" element={<PrivateRoute><PrivateRoute><Header/><Projects/></PrivateRoute></PrivateRoute>} />
           <Route path="/terms" element={"<h1>Terms and conditions</h1>"} />
-          <Route path="*" element={"<h1>404 error!!<br/>Page not found</h1>"}/>
+          <Route path="*" element={<NotFound></NotFound>}/>
 
         </Routes>
       </BrowserRouter>
