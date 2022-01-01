@@ -6,8 +6,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import { CircularProgress } from '@mui/material';
 import ShowAlert from '../../../utilities/ShowAlert/ShowAlert';
+import useTitle from '../../../hooks/useTitle';
 
 const Registration = () => {
+    useTitle("SCOFS - Login")
+
     const navigate = useNavigate();
     const { user, firebaseRegister, firebaseGoogleLogin, firebaseGithubLogin, loading, authError } = useAuth();
 

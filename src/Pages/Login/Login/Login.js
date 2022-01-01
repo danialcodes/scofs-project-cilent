@@ -7,8 +7,10 @@ import { Container, Grid, TextField, Typography, Button, CircularProgress,Box, A
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import ShowAlert from '../../../utilities/ShowAlert/ShowAlert';
+import useTitle from '../../../hooks/useTitle';
 
 const Login = () => {
+    useTitle("SCOFS - Login")
     const location = useLocation();
     const navigate = useNavigate();
     const { user, firebaseEmailPassLogin, firebaseGoogleLogin, firebaseGithubLogin, firebaseSignOut, loading, authError } = useAuth();

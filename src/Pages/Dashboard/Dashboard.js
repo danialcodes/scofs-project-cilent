@@ -1,9 +1,13 @@
 import React from 'react';
+import useTitle from '../../hooks/useTitle';
 
-const Dashboard = () => {
+const Dashboard = ({ title }) => {
+    useTitle(title || "SCOFS - Dashboard")
+
     return (
         <div>
-            <h1>Dashboard</h1>
+            <h1 className='text-center text-3xl'>Dashboard</h1>
+
         </div>
     );
 };

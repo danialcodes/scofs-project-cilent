@@ -25,16 +25,17 @@ function App() {
 
         <Routes>
 
-          <Route path="/" element={<PrivateRoute><Header/><Home /></PrivateRoute>} />
+          <Route path="/" element={<PrivateRoute><Header/> <Home /> </PrivateRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Registration />} />
-          <Route path="/profile" element={<PrivateRoute><Header/><Profile /></PrivateRoute>} />
+          <Route path="/profile" element={<PrivateRoute><Header/> <Profile /> </PrivateRoute>} />
           <Route path="/scoreboard" element={<PrivateRoute><Header/><Scoreboard /></PrivateRoute>} />
           <Route path="/settings" element={<PrivateRoute><Header/><Settings /></PrivateRoute>} />
           <Route path="/dashboard" element={<PrivateRoute><Header/><Dashboard /></PrivateRoute>} />
           <Route path="/about" element={<PrivateRoute><Header/>< About /></PrivateRoute>} />
           <Route path="/projects" element={<PrivateRoute><PrivateRoute><Header/><Projects/></PrivateRoute></PrivateRoute>} />
-          {/* <Route path="/projects" element={<PrivateRoute><PrivateRoute><Header/><Profile /></PrivateRoute></PrivateRoute>} /> */}
+          <Route path="/terms" element={"<h1>Terms and conditions</h1>"} />
+          <Route path="*" element={"<h1>404 error!!<br/>Page not found</h1>"}/>
 
         </Routes>
       </BrowserRouter>
