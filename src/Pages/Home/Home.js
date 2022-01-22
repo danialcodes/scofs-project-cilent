@@ -1,11 +1,14 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import useTitle from '../../hooks/useTitle';
+import Header from '../Header/Header';
 
 const Home = () => {
     return (
-        <div>
-            <h1 className='text-center text-3xl'>Home page</h1>
-        </div>
+        <>
+            <Header></Header>
+            <Outlet/>
+        </>
     );
 };
 

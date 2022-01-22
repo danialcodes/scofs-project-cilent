@@ -13,8 +13,8 @@ const Login = () => {
     useTitle("SCOFS - Login")
     const location = useLocation();
     const navigate = useNavigate();
-    const { user, firebaseEmailPassLogin, firebaseGoogleLogin, firebaseGithubLogin, firebaseSignOut, loading, authError } = useAuth();
-    console.log(authError);
+    const { firebaseEmailPassLogin, firebaseGoogleLogin, firebaseGithubLogin, firebaseSignOut, loading, authError } = useAuth();
+    // console.log(authError);
     const [loginUserData, setLoginUserData] = useState(
         { email: "", password: "" }
     );

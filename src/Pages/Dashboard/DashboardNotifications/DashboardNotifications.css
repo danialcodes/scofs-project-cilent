@@ -1,0 +1,14 @@
+.dashboardnotification::-webkit-scrollbar {
+    width: 5px;
+    cursor: pointer;
+
+}
+.dashboardnotification::-webkit-scrollbar-track {
+    background-color: rgba(229, 231, 235, .5);
+    cursor: pointer;
+}
+.dashboardnotification::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background-color: #2bd4a1;
+    /*outline: 1px solid slategrey;*/
+}

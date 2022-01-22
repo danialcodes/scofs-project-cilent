@@ -62,8 +62,8 @@ const Header = () => {
                                 </div>
                                 <ul className="py-1" >
                                     <li>
-                                        <NavLink to="/dashboard" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white
-                                    ">Dashboard</NavLink>
+                                        <NavLink to="/profile" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white
+                                    ">Profile</NavLink>
                                     </li>
                                     <li>
                                         <NavLink to="/settings" className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</NavLink>
@@ -87,10 +87,10 @@ const Header = () => {
 
                     <div className={`${showDropdown ? "" : "hidden"} justify-between items-center w-full md:flex md:w-auto md:order-1`}>
                         <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
-                            <li>
+                            {/* <li>
                                 <NavLink style={activeStyle} to="/" className="
                                  link-underline link-underline-black block py-2 pr-4 pl-3 text-green-700  rounded hover:text-gray-900 md:bg-transparent md:p-0 dark:text-white text-xl" aria-current="page">HOME</NavLink>
-                            </li>
+                            </li> */}
                             <li>
                                 <NavLink style={activeStyle} to="/about" className="
                                 link-underline link-underline-black
@@ -105,11 +105,11 @@ const Header = () => {
                                 link-underline link-underline-black
                                 text-xl block py-2 pr-4 pl-3 text-green-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 hover:text-gray-900 md:p-0 ">SCOREBOARD</NavLink>
                             </li>
-                            <li>
+                            {/* <li>
                                 <NavLink style={activeStyle} to="/profile" className="
                                 link-underline link-underline-black
                                 text-xl block py-2 pr-4 pl-3 text-green-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 hover:text-gray-900 md:p-0 ">PROFILE</NavLink>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
 

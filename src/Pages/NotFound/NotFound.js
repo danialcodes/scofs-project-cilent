@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 
-const NotFound = () => {
+const NotFound = ({title}) => {
+    useTitle(title||"Page Not Found");
+
     return (
         <div className="overflow-hidden">
             <div className="min-h-screen md:flex">
